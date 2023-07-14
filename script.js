@@ -68,31 +68,67 @@ subMenuEl.style.position = 'absolute';
 //4.5
 subMenuEl.style.top = '0';
 
-//5.1//!============need help. is it selecting all a's? Do I need to use allATags?
-const topMenuLinks = document.querySelector('a');
-
+//5.1
+const topMenuLinks = document.querySelectorAll('a');
+console.log(topMenuLinks);
 const showingSubMenu = 'false'
 
-//5.2//!============need help
+
+// console.log(allATags);
+
+//5.2
 topMenuEl.addEventListener('click', function(event) {
   event.preventDefault()
-  // console.log(event);
+  // console.log(EventSource);
 
-  // if (event != a){ //!don't know how to make event not a =>return
-  //   event.stopPropagation()
-  // }
-  // console.log(a);
+  if(event.target.tagName !== 'A') { // true if it's not a
+        return
+    // event.stopPropagation()
+  }
+  console.log(event.target);
+  
+  
+  //5.3
+  // console.log();
+  // a.classList.contains('a')
+  if(event.target.classList.contains('active')) {// only runs i=f class active is found
+    event.target.classList.remove('active');
+    showingSubMenu = 'false'
+    subMenuEl.style.top = '0'
+    return
+  }
+  //5.4
+  event.target.classList.remove('active');//! not sure if its correct
+  // console.log(event.target);
+  
+  //5.5
+  event.target.classList.add('active');//! not sure if its correct
+//!how can I check if it's adding the class 'active'
+
+//5.6
+//event.target.textContent = "about"
+  const linkFound = menuLinks.find(obj => obj.text === 'account')
+    console.log(linkFound);
+
+    if (linkFound.subLinks !== undefined) {
+      showingSubMenu = true
+
+    } else {
+      showingSubMenu = false
+  }
+
 }
 )
 
-//5.3
-console.log();
-a.classList.contains('a')
+// const linkFound = menuLinks.find(obj => obj.text === 'account');
 
+//   console.log(linkFound);
 
+//   if (linkFound.subLinks !== undefined) {
+//     showingSubMenu = true
+// } else {
+//       showingSubMenu = false
 
-
-
-
+//   }
 
 
